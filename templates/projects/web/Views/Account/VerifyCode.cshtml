@@ -3,34 +3,33 @@
     ViewData["Title"] = "Verify";
 }
 
-<h2>@ViewData["Title"].</h2>
+<h2 class="ui header">@ViewData["Title"]</h2>
 
-<form asp-controller="Account" asp-action="VerifyCode" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
-    <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+<form asp-controller="Account" asp-action="VerifyCode" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="ui small form validate-me" role="form">
     <input asp-for="Provider" type="hidden" />
     <input asp-for="RememberMe" type="hidden" />
-    <h4>@ViewData["Status"]</h4>
-    <hr />
-    <div class="form-group">
-        <label asp-for="Code" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Code" class="form-control" />
-            <span asp-validation-for="Code" class="text-danger"></span>
+    <h4 class="ui header">@ViewData["Status"]</h4>
+
+    <div class="field">
+        <div class="ui left icon input">
+            <i class="code icon"></i>
+            <input asp-for="Code" placeholder="Verification Code" />
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <div class="checkbox">
-                <input asp-for="RememberBrowser" />
-                <label asp-for="RememberBrowser"></label>
-            </div>
+    <div class="field">
+        <div class="ui checkbox">
+            <input asp-for="RememberBrowser" type="checkbox" tabindex="0" class="hidden"/>
+            @*            <input name="RememberBrowser" id="RememberBrowser" type="checkbox" tabindex="0" class="hidden" />*@
+            <label>Remember this browser?</label>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Submit</button>
-        </div>
-    </div>
+    
+  
+    <input type="submit" class="ui blue submit button" value="Submit" />
+    <br />
+    <div asp-validation-summary="ValidationSummary.All" class="ui error message"></div>
+    <br />
+
 </form>
 
 @section Scripts {

@@ -206,6 +206,8 @@ var AspnetGenerator = yeoman.generators.Base.extend({
         this.fs.copyTpl(this.templatePath('Services/IEmailSender.cs'), this.applicationName + '/Services/IEmailSender.cs', this.templatedata);
         this.fs.copyTpl(this.templatePath('Services/ISmsSender.cs'), this.applicationName + '/Services/ISmsSender.cs', this.templatedata);
         this.fs.copyTpl(this.templatePath('Services/MessageServices.cs'), this.applicationName + '/Services/MessageServices.cs', this.templatedata);
+		// Tag Helpers
+        this.fs.copyTpl(this.templatePath('TagHelpers/MenuLinkTagHelper.cs'), this.applicationName + '/TagHelpers/MenuLinkTagHelper.cs', this.templatedata);
         // ViewModels
         this.fs.copyTpl(this.templatePath('ViewModels/**/*'), this.applicationName + '/ViewModels', this.templatedata);
         // Views

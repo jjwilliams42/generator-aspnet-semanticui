@@ -22,7 +22,7 @@ var AspnetGenerator = yeoman.generators.Base.extend({
 
 
   init: function() {
-    this.log(yosay('Welcome to the marvellous ASP.NET 5 generator!'));
+    this.log(yosay('Welcome to the marvellous ASP.NET 5 + Semantic UI generator!'));
     this.templatedata = {};
   },
 
@@ -59,7 +59,7 @@ var AspnetGenerator = yeoman.generators.Base.extend({
             name: 'Console Application',
             value: 'console'
           }, {
-            name: 'Web Application',
+            name: 'Web Application w/ Semantic UI',
             value: 'web'
           }, {
             name: 'Web Application Basic [without Membership and Authorization]',

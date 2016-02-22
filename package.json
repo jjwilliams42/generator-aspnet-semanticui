@@ -1,10 +1,10 @@
 {
-  "name": "generator-aspnet",
+  "name": "generator-aspnet-semanticui",
   "version": "0.0.93",
-  "description": "Yeoman generator for ASP.NET 5 apps",
+  "description": "Yeoman generator for ASP.NET 5 apps with Semantic UI",
   "license": "Apache-2.0",
   "main": "app/index.js",
-  "repository": "OmniSharp/generator-aspnet",
+  "repository": "jackjwilliams/generator-aspnet-semanticui",
   "contributors": [
     {
       "name": "Sourabh Shirhatti",

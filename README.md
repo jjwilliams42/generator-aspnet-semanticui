@@ -10,6 +10,12 @@ Yeoman generator for ASP.NET 5 projects with Semantic UI
 
 [![](https://cloud.githubusercontent.com/assets/14539/10418056/b72ae284-7050-11e5-99db-5a0cda8f0ac1.gif)](https://github.com/OmniSharp/generator-aspnet 'ASP.NET 5 Generator')
 
+
+## EXPERIMENTAL
+You can swap out the UI framework used for MVC apps using the following arguments:
+
+yo aspnet-semanticui (web|webbasic) MyAwesomeProject (semantic|bootstrap)
+
 ## Getting Started with Semantic UI
 
 The goal of `generator-aspnet-semanticui` is to bootstrap your ASP.NET 5 (DNX) project with the Semantic UI library.

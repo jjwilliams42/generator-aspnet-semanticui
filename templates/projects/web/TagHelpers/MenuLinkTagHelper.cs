@@ -41,7 +41,6 @@ namespace <%= namespace %>.TagHelpers
             var a = new TagBuilder("a");
 
             a.MergeAttribute("href", $"{menuUrl}");
-            a.MergeAttribute("title", MenuText);
             a.MergeAttribute("class", "item");
 
             a.InnerHtml.Append(MenuText);

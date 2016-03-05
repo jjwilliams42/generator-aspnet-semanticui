@@ -23,7 +23,7 @@ var AspnetGenerator = yeoman.generators.Base.extend({
 
 
   init: function() {
-    this.log(yosay('Welcome to the marvellous ASP.NET 5 + Semantic UI generator!'));
+    this.log(yosay('Welcome to the marvellous ASP.NET 5 generator!'));
     this.templatedata = {};
   },
 
@@ -79,11 +79,32 @@ var AspnetGenerator = yeoman.generators.Base.extend({
             value: 'unittest'
           }
         ]
-      }];
+      },
+      {
+          type: 'list',
+          name: 'ui',
+          message: 'Which UI framework would you like to use?',
+          default: 'bootstrap',
+          choices: [
+              {
+                  name: 'Bootstrap (3.3.5)',
+                  value: 'bootstrap'
+              },
+              {
+                  name: 'Semantic UI (2.1.8)',
+                  value: 'semantic'
+              }
+          ],
+          when: function (answers){
+              return answers.type === 'web' || answers.type === 'webbasic';
+          }
+          
+      }
+      ];
 
       this.prompt(prompts, function (props) {
         this.type = props.type;
-
+        this.ui = props.ui;
         done();
       }.bind(this));
     }
@@ -96,18 +117,6 @@ var AspnetGenerator = yeoman.generators.Base.extend({
     this.templatedata.grunt = this.options.grunt || false;
     this.templatedata.coreclr = this.options.coreclr || false;
     this.templatedata.ui = this.ui;
-    this.templatedata.uiversion = this._getUIVersion();
-  },
-  
-  _getUIVersion: function(){
-      switch (this.ui){
-          case 'bootstrap':
-            return '3.3.5';
-          case 'semantic':
-            return '2.1.8';
-          default:
-            return '3.3.5';
-      }
   },
 
   askForName: function() {
@@ -220,8 +229,6 @@ var AspnetGenerator = yeoman.generators.Base.extend({
         this.fs.copyTpl(this.templatePath('Services/IEmailSender.cs'), this.applicationName + '/Services/IEmailSender.cs', this.templatedata);
         this.fs.copyTpl(this.templatePath('Services/ISmsSender.cs'), this.applicationName + '/Services/ISmsSender.cs', this.templatedata);
         this.fs.copyTpl(this.templatePath('Services/MessageServices.cs'), this.applicationName + '/Services/MessageServices.cs', this.templatedata);
-		// Tag Helpers
-        this.fs.copyTpl(this.templatePath('TagHelpers/MenuLinkTagHelper.cs'), this.applicationName + '/TagHelpers/MenuLinkTagHelper.cs', this.templatedata);
         // ViewModels
         this.fs.copyTpl(this.templatePath('ViewModels/**/*'), this.applicationName + '/ViewModels', this.templatedata);
         // Views
@@ -259,7 +266,6 @@ var AspnetGenerator = yeoman.generators.Base.extend({
         this.fs.copyTpl(this.templatePath('Controllers/HomeController.cs'), this.applicationName + '/Controllers/HomeController.cs', this.templatedata);
         // Views
         this.fs.copyTpl(this.templatePath('Views/**/*'), this.applicationName + '/Views', this.templatedata);
-        
         
         // wwwroot - the content in the wwwroot does not include any direct references or imports
         // So again it is copied 1-to-1 - but tests cover list of all files
